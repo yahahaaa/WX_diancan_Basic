@@ -1,0 +1,77 @@
+spring:
+## 配置数据库连接池
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.0.106:3306/stage?serverTimezone=Asia/Shanghai&userUnicode=True&characterEncoding=utf-8&useSSL=false
+
+## 控制台打印jpa的sql语句
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  ## 实体对象转json对象时自动忽略null值属性
+  jackson:
+    default-property-inclusion: non_null
+
+# redis 设置主机和端口号
+  redis:
+    host: 192.168.0.106
+    port: 6379
+
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+#日志输出地址
+#  file: G:\微信点餐系统代码\sell.log
+#  设置具体目录的日志打印级别
+#  level:
+#    com.imooc.LoggerTest: debug
+
+# 跟踪设置的包路径下的sql信息打印到控制台
+logging:
+  level:
+    com.atzjhydx.weixindiancan.dataobject.mapper: trace
+
+## 设置项目http访问的url前缀地址
+server:
+  servlet:
+    context-path: /sell
+  port: 80
+
+
+## 微信公众平台和微信开放平台
+## 这些都不能用了，仅占位
+wechat:
+  # 公众账号，用于网页授权
+  mpAppId: wxa0b56bf5d6ea1de3
+  mpAppSecret: e1f2361fce607b7cf70aff879f559e9b
+
+  # 开放平台，卖家扫码登录使用
+  openAppId: wx6ad144e54af67d87
+  openAppSecret: e1f2361fce607b7cf70aff879f559e9b
+
+  # 支付/商户号（要和公众账号绑定）
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+
+  # 证书 发起支付不需要证书，退款需要
+  keyPath: C:/Users/李明烛/IdeaProjects/weixindiancan/h5.p12
+
+  # 微信异步请求地址
+  notifyUrl: http://weixin-diancan.natapp1.cc/sell/pay/notify
+
+  # 推送模板
+  templatedId:
+    orderStatus: ithVue6Ouo6w3_qDZ2xV4NpNrM4eFmg61a_njz8MWNE
+
+## 微信公众平台和微信开放平台的授权回调地址
+projectUrl:
+  wechatMpAuthorize: http://weixin-diancan.natapp1.cc/sell
+  wechatOpenAuthorize: http://weixin-diancan.natapp1.cc/sell
+  sell: http://weixin-diancan.natapp1.cc
+
+## mybatis的xml地址
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
